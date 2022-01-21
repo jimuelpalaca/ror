@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: "Test"
-    runs-on: macos-11
+    runs-on: ubuntu-latest
 
     services:
       postgres:
