@@ -23,15 +23,15 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+          RAILS_ENV: test
       - uses: actions/checkout@v2
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
           bundler-cache: true
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
-          RAILS_ENV: test
       - name: Build
         run: |
           sudo apt-get -yqq install libpq-dev
