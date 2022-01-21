@@ -31,9 +31,11 @@ jobs:
           bundler-cache: true
       - name: Run Test
         env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/rtg_lms_test
           RAILS_ENV: test
         run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate 
           bundle exec rails test
   deploy:
     if: ${{ github.event_name == 'push' }}
