@@ -43,7 +43,7 @@ jobs:
           bundle exec rails db:migrate
           RAILS_ENV=test bundle exec rake
   deploy:
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && sucess() }}
     needs: test
     name: Deploy to Heroku
     runs-on: ubuntu-latest
